@@ -1,0 +1,57 @@
+---
+title: "matlab raman sepctra"
+
+date: "`r Sys.Date()`"
+
+output:
+  html_document:
+    number_sections: true
+    code_folding: show
+    theme: yeti
+    toc: true
+    toc_depth: 2
+    toc_float: true
+
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r packages}
+setwd("~/R_databases")
+library(R.matlab)
+library(shiny)
+```
+
+
+```{r readin}
+data <- readMat("data/referencedatabasebiomolecules.mat")
+```
+
+```{r code, eval=FALSE, include=FALSE}
+
+
+# Extract X-axis data
+x <- data$Xaxis
+
+# Loop through each sample and plot against X-axis
+for (i in 1:60) {
+  # Extract y-axis data for current sample
+  y <- data[[i]]
+
+  # Plot current sample against X-axis
+  plot(x, y, type = "l", main = names(data)[i])
+}
+
+
+```
+
+
+
+
+
+
